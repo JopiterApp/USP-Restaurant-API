@@ -1,0 +1,15 @@
+summary: Lists all restaurants
+requestBody:
+  $ref: '../../components/requestBodies/USPAuthBody.yaml'
+responses:
+  '200':
+    description: Default response
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/definitions/restaurant/Restaurant.yaml
+        examples:
+          Example1:
+            $ref: ../../components/examples/restaurant/RestaurantExample.yaml
+  '500':
+    description: Error if a bad hash was passed on request

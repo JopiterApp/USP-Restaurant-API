@@ -1,0 +1,355 @@
+openapi: 3.0.3
+info:
+  title: USP Restaurants API
+  version: 1.0.0
+  description: >-
+    API definition for USP's restaurants.  This isn't an official resource. It
+    was created by the Jopiter team as a tool to help integration with USP's
+    poor and unopened API. We did a lot of digging on how it works so you don't
+    have to. <br /> <br /> The original API was extracted from USP's
+    Restaurant's APP ([Cardápio
+    USP](https://play.google.com/store/apps/details?id=br.usp.cardapio_usp)).
+    <br /> At the current version, the decompiled `HASH` is
+    `596df9effde6f877717b4e81fdb2ca9f`.  It's used for all authentication within
+    USP's APIs. Whenever (and if) it's changed, this page will be updated
+    accordingly.
+  license:
+    name: Apache-2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  - url: 'https://uspdigital.usp.br/rucard/servicos'
+    variables: {}
+    description: USP Prod. Server
+paths:
+  /restaurants:
+    post:
+      summary: Lists all restaurants
+      requestBody:
+        $ref: '#/components/requestBodies/USPAuthBody'
+      responses:
+        '200':
+          description: Default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+              examples:
+                Example1:
+                  $ref: '#/components/examples/RestaurantExample'
+        '500':
+          description: Error if a bad hash was passed on request
+  '/menu/{restaurant_id}':
+    post:
+      parameters:
+        - in: path
+          name: restaurant_id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID for a specific restaurant. Can be found in /restaurants
+      summary: Fetch menus by Restaurant ID
+      description: >-
+        The {restaurant_id} can be found in the /restaurants API path, which
+        contains all IDs for all restaurants from each campus.
+      requestBody:
+        $ref: '#/components/requestBodies/USPAuthBody'
+      responses:
+        '200':
+          description: Default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Menu'
+              examples:
+                Example1:
+                  $ref: '#/components/examples/MenuExample'
+        '500':
+          description: Error if a bad hash was passed on request
+components:
+  schemas:
+    USPAuthForm:
+      type: object
+      properties:
+        hash:
+          type: string
+      required:
+        - hash
+    Restaurant:
+      type: object
+      properties:
+        name:
+          type: string
+        restaurants:
+          type: array
+          items:
+            type: object
+            properties:
+              alias:
+                type: string
+              address:
+                type: string
+              name:
+                type: string
+              phones:
+                type: string
+              id:
+                type: string
+              latitude:
+                type: string
+              longitude:
+                type: string
+              photourl:
+                type: string
+              workinghours:
+                type: object
+                properties:
+                  sunday:
+                    type: object
+                    properties:
+                      lunch:
+                        type: string
+                      dinner:
+                        type: string
+                      breakfast:
+                        type: string
+                  saturday:
+                    type: object
+                    properties:
+                      lunch:
+                        type: string
+                      dinner:
+                        type: string
+                      breakfast:
+                        type: string
+                  weekdays:
+                    type: object
+                    properties:
+                      lunch:
+                        type: string
+                      dinner:
+                        type: string
+                      breakfast:
+                        type: string
+              cashiers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    prices:
+                      type: object
+                      properties:
+                        special:
+                          type: object
+                          properties:
+                            lunch:
+                              type: string
+                            dinner:
+                              type: string
+                            breakfast:
+                              type: string
+                        students:
+                          type: object
+                          properties:
+                            lunch:
+                              type: string
+                            dinner:
+                              type: string
+                            breakfast:
+                              type: string
+                        visiting:
+                          type: object
+                          properties:
+                            lunch:
+                              type: string
+                            dinner:
+                              type: string
+                            breakfast:
+                              type: string
+                        employees:
+                          type: object
+                          properties:
+                            lunch:
+                              type: string
+                            dinner:
+                              type: string
+                            breakfast:
+                              type: string
+                    longitude:
+                      type: string
+                    latitude:
+                      type: string
+                    workinghours:
+                      type: string
+              hasCashier:
+                type: boolean
+    Menu:
+      type: object
+      properties:
+        message:
+          type: object
+          properties:
+            message:
+              type: string
+            error:
+              type: boolean
+        meals:
+          type: array
+          items:
+            type: object
+            properties:
+              dinner:
+                type: object
+                properties:
+                  menu:
+                    type: string
+                  calories:
+                    type: string
+                    nullable: true
+              lunch:
+                type: object
+                properties:
+                  menu:
+                    type: string
+                  calories:
+                    type: string
+                    nullable: true
+              date:
+                type: string
+                format: date
+                pattern: '^\d{2}\/\d{2}\/\d{4}$'
+        observation:
+          type: object
+          properties:
+            observation:
+              type: string
+  requestBodies:
+    USPAuthBody:
+      description: USP request body for authentication
+      required: true
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            $ref: '#/components/schemas/USPAuthForm'
+  examples:
+    RestaurantExample:
+      summary: Restaurant Example
+      value:
+        name: Cidade Universitária
+        restaurants:
+          - alias: Central
+            address: >-
+              Praça do Relógio Solar, travessa 8, no 300, Campus Butantã, São
+              Paulo - SP
+            name: Central
+            phones: (11) 3091-3318
+            id: '6'
+            latitude: '-23.5602110'
+            longitude: '-46.7218170'
+            photourl: 'https://uspdigital.usp.br/comumwebdev/imagens/cardapio/central.jpg'
+            workinghours:
+              sunday:
+                lunch: ''
+                breakfast: ''
+                dinner: ''
+              saturday:
+                lunch: '11:15 às 14:15'
+                breakfast: '07:30 às 09:00'
+                dinner: ''
+              weekdays:
+                lunch: '11:15 às 14:15'
+                breakfast: '07:00 às 08:30'
+                dinner: '17:30 às 19:45'
+            cashiers:
+              - address: >-
+                  Rua do Anfiteatro, nº 295 - Cidade Universitária - São Paulo -
+                  CEP 05508-060
+                prices:
+                  special:
+                    dinner: '10,00'
+                    lunch: '10,00'
+                    breakfast: ''
+                  students:
+                    dinner: '2,00'
+                    lunch: '2,00'
+                    breakfast: ''
+                  visiting:
+                    dinner: '15,00'
+                    lunch: '15,00'
+                    breakfast: ''
+                  employees:
+                    dinner: '15,00'
+                    lunch: '15,00'
+                    breakfast: ''
+                longitude: '-46.7216980'
+                latitude: '-23.5594340'
+                workinghours: Segunda à Sexta - 7h as 19h45
+            hasCashier: 'false'
+    MenuExample:
+      summary: Menu Example
+      value:
+        message:
+          error: false
+          message: ''
+        meals:
+          - dinner:
+              menu: |-
+                Acompanhamentos: Arroz / Feijão / Arroz Integral
+                Prato principal: Isca de Carne à Moda Chinesa
+                Prato principal Vegetariano: Cuscuz de Lentilha
+                Guarnição: Macarrão Alho e Óleo
+                Saladas: Alface, Tomate, Beterraba Cozida
+                Sobremesa: Laranja / Suco: Maracujá
+              calories: '1056'
+            lunch:
+              menu: |-
+                Acompanhamentos: Arroz / Feijão / Arroz Integral
+                Prato principal: Frango Assado
+                Prato principal Vegetariano: Ovo Frito
+                Guarnição: Polenta
+                Saladas: Alface, Pepino com Cenoura, Soja em Grãos
+                Sobremesa: Laranja / Suco: Maracujá
+              calories: '1219'
+            date: 09/03/2020
+          - dinner:
+              menu: |-
+                Acompanhamentos: Arroz / Feijão / Arroz Integral
+                Prato principal: Hambúrguer Assado
+                Prato principal Vegetariano: Hambúrguer de PTS (Contém Glúten)
+                Guarnição: Cebola Agridoce
+                Saladas: Alface, Pepino, Tomate 
+                Sobremesa: Doce de Abobora Industrializado / Suc
+              calories: '895'
+            lunch:
+              menu: |-
+                Acompanhamentos: Arroz / Feijão / Arroz Integral
+                Prato principal: Fricassê de Frango (Contém Lactose)
+                Prato principal Vegetariano: Ovo Cozido
+                Guarnição: Cenoura Sauté
+                Saladas: Alface, Rabanete Agridoce, Abobrinha Cozida
+                Sobremesa: Doce de Abobora Industri
+              calories: '1145'
+            date: 13/03/2020
+          - dinner:
+              menu: ''
+              calories: '0'
+            lunch:
+              menu: |-
+                Acompanhamentos: Arroz / Feijão / Arroz Integral
+                Prato principal: Bisteca Suína
+                Prato principal Vegetariano: Ovo Frito
+                Guarnição: Farofa de Couve
+                Saladas: Alface, Repolho, Berinjela Cozida
+                Sobremesa: Mamão / Suco: Caju
+              calories: '1236'
+            date: 14/03/2020
+          - dinner:
+              menu: ''
+              calories: '0'
+            lunch:
+              menu: ''
+              calories: '0'
+            date: 15/03/2020
+        observation:
+          observation: Cardápio sujeito a alteração sem aviso prévio

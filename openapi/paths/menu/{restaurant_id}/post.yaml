@@ -1,0 +1,25 @@
+parameters:
+  - in: path
+    name: restaurant_id
+    schema:
+      type: integer
+    required: true
+    description: Numeric ID for a specific restaurant. Can be found in /restaurants
+summary: Fetch menus by Restaurant ID
+description: >-
+  The {restaurant_id} can be found in the /restaurants API path, which
+  contains all IDs for all restaurants from each campus.
+requestBody:
+  $ref: '../../../components/requestBodies/USPAuthBody.yaml'
+responses:
+  '200':
+    description: Default response
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/definitions/menu/Menu.yaml'
+        examples:
+          Example1:
+            $ref: '../../../components/examples/menu/MenuExample.yaml'
+  '500':
+    description: Error if a bad hash was passed on request

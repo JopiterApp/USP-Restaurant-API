@@ -1,0 +1,109 @@
+type: object
+properties:
+  name:
+    type: string
+  restaurants:
+    type: array
+    items:
+      type: object
+      properties:
+        alias:
+          type: string
+        address:
+          type: string
+        name:
+          type: string
+        phones:
+          type: string
+        id:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+        photourl:
+          type: string
+        workinghours:
+          type: object
+          properties:
+            sunday:
+              type: object
+              properties:
+                lunch:
+                  type: string
+                dinner:
+                  type: string
+                breakfast:
+                  type: string
+            saturday:
+              type: object
+              properties:
+                lunch:
+                  type: string
+                dinner:
+                  type: string
+                breakfast:
+                  type: string
+            weekdays:
+              type: object
+              properties:
+                lunch:
+                  type: string
+                dinner:
+                  type: string
+                breakfast:
+                  type: string
+        cashiers:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+              prices:
+                type: object
+                properties:
+                  special:
+                    type: object
+                    properties:
+                      lunch:
+                        type: string
+                      dinner:
+                        type: string
+                      breakfast:
+                        type: string
+                  students:
+                    type: object
+                    properties:
+                      lunch:
+                        type: string
+                      dinner:
+                        type: string
+                      breakfast:
+                        type: string
+                  visiting:
+                    type: object
+                    properties:
+                      lunch:
+                        type: string
+                      dinner:
+                        type: string
+                      breakfast:
+                        type: string
+                  employees:
+                    type: object
+                    properties:
+                      lunch:
+                        type: string
+                      dinner:
+                        type: string
+                      breakfast:
+                        type: string
+              longitude:
+                type: string
+              latitude:
+                type: string
+              workinghours:
+                type: string
+        hasCashier:
+          type: boolean

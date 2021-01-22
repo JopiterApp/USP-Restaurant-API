@@ -1,0 +1,52 @@
+summary: Restaurant Example
+value:
+  name: Cidade Universitária
+  restaurants:
+    - alias: Central
+      address: >-
+        Praça do Relógio Solar, travessa 8, no 300, Campus Butantã, São Paulo -
+        SP
+      name: Central
+      phones: (11) 3091-3318
+      id: '6'
+      latitude: '-23.5602110'
+      longitude: '-46.7218170'
+      photourl: 'https://uspdigital.usp.br/comumwebdev/imagens/cardapio/central.jpg'
+      workinghours:
+        sunday:
+          lunch: ''
+          breakfast: ''
+          dinner: ''
+        saturday:
+          lunch: '11:15 às 14:15'
+          breakfast: '07:30 às 09:00'
+          dinner: ''
+        weekdays:
+          lunch: '11:15 às 14:15'
+          breakfast: '07:00 às 08:30'
+          dinner: '17:30 às 19:45'
+      cashiers:
+        - address: >-
+            Rua do Anfiteatro, nº 295 - Cidade Universitária - São Paulo - CEP
+            05508-060
+          prices:
+            special:
+              dinner: '10,00'
+              lunch: '10,00'
+              breakfast: ''
+            students:
+              dinner: '2,00'
+              lunch: '2,00'
+              breakfast: ''
+            visiting:
+              dinner: '15,00'
+              lunch: '15,00'
+              breakfast: ''
+            employees:
+              dinner: '15,00'
+              lunch: '15,00'
+              breakfast: ''
+          longitude: '-46.7216980'
+          latitude: '-23.5594340'
+          workinghours: Segunda à Sexta - 7h as 19h45
+      hasCashier: 'false'

@@ -1,0 +1,66 @@
+summary: Menu Example
+value:
+  message:
+    error: false
+    message: ''
+  meals:
+    - dinner:
+        menu: |-
+          Acompanhamentos: Arroz / Feijão / Arroz Integral
+          Prato principal: Isca de Carne à Moda Chinesa
+          Prato principal Vegetariano: Cuscuz de Lentilha
+          Guarnição: Macarrão Alho e Óleo
+          Saladas: Alface, Tomate, Beterraba Cozida
+          Sobremesa: Laranja / Suco: Maracujá
+        calories: '1056'
+      lunch:
+        menu: |-
+          Acompanhamentos: Arroz / Feijão / Arroz Integral
+          Prato principal: Frango Assado
+          Prato principal Vegetariano: Ovo Frito
+          Guarnição: Polenta
+          Saladas: Alface, Pepino com Cenoura, Soja em Grãos
+          Sobremesa: Laranja / Suco: Maracujá
+        calories: '1219'
+      date: 09/03/2020
+    - dinner:
+        menu: |-
+          Acompanhamentos: Arroz / Feijão / Arroz Integral
+          Prato principal: Hambúrguer Assado
+          Prato principal Vegetariano: Hambúrguer de PTS (Contém Glúten)
+          Guarnição: Cebola Agridoce
+          Saladas: Alface, Pepino, Tomate 
+          Sobremesa: Doce de Abobora Industrializado / Suc
+        calories: '895'
+      lunch:
+        menu: |-
+          Acompanhamentos: Arroz / Feijão / Arroz Integral
+          Prato principal: Fricassê de Frango (Contém Lactose)
+          Prato principal Vegetariano: Ovo Cozido
+          Guarnição: Cenoura Sauté
+          Saladas: Alface, Rabanete Agridoce, Abobrinha Cozida
+          Sobremesa: Doce de Abobora Industri
+        calories: '1145'
+      date: 13/03/2020
+    - dinner:
+        menu: ''
+        calories: '0'
+      lunch:
+        menu: |-
+          Acompanhamentos: Arroz / Feijão / Arroz Integral
+          Prato principal: Bisteca Suína
+          Prato principal Vegetariano: Ovo Frito
+          Guarnição: Farofa de Couve
+          Saladas: Alface, Repolho, Berinjela Cozida
+          Sobremesa: Mamão / Suco: Caju
+        calories: '1236'
+      date: 14/03/2020
+    - dinner:
+        menu: ''
+        calories: '0'
+      lunch:
+        menu: ''
+        calories: '0'
+      date: 15/03/2020
+  observation:
+    observation: Cardápio sujeito a alteração sem aviso prévio

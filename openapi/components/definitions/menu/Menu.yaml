@@ -1,0 +1,39 @@
+type: object
+properties:
+  message:
+    type: object
+    properties:
+      message:
+        type: string
+      error:
+        type: boolean
+  meals:
+    type: array
+    items:
+      type: object
+      properties:
+        dinner:
+          type: object
+          properties:
+            menu:
+              type: string
+            calories:
+              type: string
+              nullable: true
+        lunch:
+          type: object
+          properties:
+            menu:
+              type: string
+            calories:
+              type: string
+              nullable: true
+        date:
+          type: string
+          format: date
+          pattern: '^\d{2}\/\d{2}\/\d{4}$'
+  observation:
+    type: object
+    properties:
+      observation:
+        type: string

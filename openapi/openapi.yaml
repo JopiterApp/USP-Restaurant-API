@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: USP Restaurants API
+  version: 1.0.0
+  description: >-
+    API definition for USP's restaurants.  This isn't an official resource. It
+    was created by the Jopiter team as a tool to help integration with USP's
+    poor and unopened API. We did a lot of digging on how it works so you don't
+    have to. <br /> <br /> The original API was extracted from USP's
+    Restaurant's APP ([Cardápio
+    USP](https://play.google.com/store/apps/details?id=br.usp.cardapio_usp)).
+    <br /> At the current version, the decompiled `HASH` is
+    `596df9effde6f877717b4e81fdb2ca9f`.  It's used for all authentication within
+    USP's APIs. Whenever (and if) it's changed, this page will be updated
+    accordingly.
+  license:
+    name: Apache-2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  - url: 'https://uspdigital.usp.br/rucard/servicos'
+    variables: {}
+    description: USP Prod. Server
+paths:
+  '/restaurants':
+    post:
+      $ref: 'paths/restaurants/post.yaml'
+  '/menu/{restaurant_id}':
+    post:
+      $ref: 'paths/menu/{restaurant_id}/post.yaml'
