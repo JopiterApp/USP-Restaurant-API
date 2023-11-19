@@ -1,4 +1,6 @@
+operationId: restaurants
 summary: Lists all restaurants
+security: []
 requestBody:
   $ref: '../../components/requestBodies/USPAuthBody.yaml'
 responses:
@@ -13,3 +15,5 @@ responses:
             $ref: ../../components/examples/restaurant/RestaurantExample.yaml
   '500':
     description: Error if a bad hash was passed on request
+  '400':
+    description: Something was missing in the request

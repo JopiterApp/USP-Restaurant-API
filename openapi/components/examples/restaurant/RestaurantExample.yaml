@@ -2,11 +2,10 @@ summary: Restaurant Example
 value:
   name: Cidade Universitária
   restaurants:
-    - alias: Central
+    - alias: Central - Campus Butantã
       address: >-
-        Praça do Relógio Solar, travessa 8, no 300, Campus Butantã, São Paulo -
-        SP
-      name: Central
+        Praça do Relógio Solar, travessa 8, no 300, Campus Butantã, São Paulo - SP
+      name: Central - Campus Butantã
       phones: (11) 3091-3318
       id: '6'
       latitude: '-23.5602110'
@@ -27,8 +26,7 @@ value:
           dinner: '17:30 às 19:45'
       cashiers:
         - address: >-
-            Rua do Anfiteatro, nº 295 - Cidade Universitária - São Paulo - CEP
-            05508-060
+            Rua do Anfiteatro, nº 295 - Cidade Universitária - São Paulo - CEP 05508-060
           prices:
             special:
               dinner: '10,00'

@@ -1,7 +1,8 @@
 openapi: 3.0.3
+security: []
 info:
   title: USP Restaurants API
-  version: 1.0.0
+  version: 1.0.1
   description: >-
     API definition for USP's restaurants.  This isn't an official resource. It
     was created by the Jopiter team as a tool to help integration with USP's
@@ -15,7 +16,7 @@ info:
     accordingly.
   license:
     name: Apache-2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
 servers:
   - url: 'https://uspdigital.usp.br/rucard/servicos'
     variables: {}

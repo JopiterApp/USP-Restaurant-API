@@ -106,4 +106,4 @@ properties:
               workinghours:
                 type: string
         hasCashier:
-          type: boolean
+          type: string

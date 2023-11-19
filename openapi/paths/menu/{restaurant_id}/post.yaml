@@ -1,3 +1,4 @@
+operationId: menu_restaurant_id
 parameters:
   - in: path
     name: restaurant_id
@@ -23,3 +24,5 @@ responses:
             $ref: '../../../components/examples/menu/MenuExample.yaml'
   '500':
     description: Error if a bad hash was passed on request
+  '400':
+    description: Something was not passed in the request
